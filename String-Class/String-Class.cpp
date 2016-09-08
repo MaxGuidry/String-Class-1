@@ -3,11 +3,15 @@
 
 int main()
 {
-	
-	stringClass tired;
-	int butt = tired.length();
-	std::cout << butt;
- 
+	myString Hello = myString("Hello");
+	myString Byeez = myString("Byeez");
+	int buttF = Hello.length();
+	int buttS = Byeez.length();
+	std::cout << buttF << "\n \n";
+	std::cout << buttS << "\n \n";
+	Hello.index();
+	int size = Hello.compare(Hello, Byeez);
+	std::cout << size << "\n";
 	system("pause");
 	return 0;
 }
