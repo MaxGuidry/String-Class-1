@@ -31,5 +31,5 @@ int stringClass::length()
 	}
 	int secondlength = i;
 	std::cout << x << " , " << i;
-	return 
+	return 0;
 }
