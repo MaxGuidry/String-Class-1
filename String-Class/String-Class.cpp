@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Header.h"
+#include "String-Class.h"
 
 int main()
 {
@@ -12,6 +13,8 @@ int main()
 	Hello.index();
 	int size = Hello.compare(Hello, Byeez);
 	std::cout << size << "\n";
+	Hello.append(Hello, Byeez);
+	Hello.prepend(Hello, Byeez);
 	system("pause");
 	return 0;
 }

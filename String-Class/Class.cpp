@@ -68,9 +68,68 @@ bool myString::compare(myString f, myString s) // Problem 3
 		equal = (f.m_Word[i] == s.m_Word[i]) ? true : false;
 		if (equal == false)
 		{
+			std::cout << "These two words are not equal \n";
+			break;
+		}
+		if (equal == true)
+		{
+			std::cout << "These two words are equal \n";
 			break;
 		}
 	}
 	return equal;
 }
 
+bool myString::append(myString f, myString s) // Problem 4 
+{
+	char append[100];
+	int x;
+	for (x = 0;;)
+	{
+		for (int first = 0; f.m_Word[first] != '\0'; first++)
+		{
+			append[x] = f.m_Word[first];
+			x++;
+		}
+		for (int second = 0; s.m_Word[second] != '\0'; second++)
+		{
+			append[x] = s.m_Word[second];
+			x++;
+		}
+		break;
+	}
+	append[x] = '\0';
+	for (int i = 0; append[i] != '\0'; i++)
+	{
+		std::cout << append[i];
+	}
+	std::cout << "\n";
+	return false;
+}
+
+bool myString::prepend(myString f, myString s) // Problem 5
+{
+	int x;
+	char prepend[100];
+	for (x = 0;;)
+	{
+		for (int second = 0; s.m_Word[second] != '\0'; second++)
+		{
+			prepend[x] = s.m_Word[second];
+			x++;
+		}
+		for (int first = 0; f.m_Word[first] != '\0'; first++)
+		{
+			prepend[x] = f.m_Word[first];
+			x++;
+		}
+		break;
+	}
+	prepend[x] = '\0';
+	for (int i = 0; prepend[i] != '\0'; i++)
+	{
+		std::cout << prepend[i];
+	}
+	std::cout << "\n";
+	return false;
+}
