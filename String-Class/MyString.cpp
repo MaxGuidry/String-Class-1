@@ -18,7 +18,7 @@ int strLength(char *str)
 MyString::MyString(char *F)
 {
 	int i;
-	for (i = 0; i < strLength(F); ++i)
+	for (i = 0; F[i] != '\0'; ++i)
 	{
 		m_Data[i] = F[i];
 	}
@@ -28,11 +28,10 @@ int MyString::length() // Problem 1
 {
 	return strLength(m_Data);
 }
+
 void MyString::index(int input) // Problem 2
 {
-	std::cout << "---------------------- \n";
-	std::cout << m_Data[input] << "\n"; //Have console output the word that is equal to that interger
-	std::cout << "---------------------- \n";
+	std::cout << "Print at Index: " << m_Data[input] << "\n \n"; //Have console output the word that is equal to that interger
 }
 
 bool MyString::compare(MyString str) // Problem 3
@@ -66,12 +65,12 @@ bool MyString::compare(MyString str) // Problem 3
 		equal = (m_Data[i] == str.m_Data[i]) ? true : false;
 		if (equal == false)
 		{
-			std::cout << "They are not equal \n \n";
+			std::cout << "Compare: They are not equal \n \n";
 			break;
 		}
 		if (equal == true)
 		{
-			std::cout << "They are equal \n \n";
+			std::cout << "Compare: They are equal \n \n";
 			break;
 		}
 	}
@@ -88,7 +87,7 @@ void MyString::append(MyString str) // Problem 4
 		m_Data[oldLength + i] = str.m_Data[i];
 	}
 	m_Data[oldLength + i] = '\0';
-
+	std::cout << "Append: ";
 	for (int in = 0; m_Data[in] != '\0'; in++)
 	{
 		std::cout << m_Data[in];
@@ -121,23 +120,31 @@ void MyString::prepend(MyString str) // Problem 5
 		m_Data[i] = newString[i];
 	}
 	m_Data[i] = '\0';
-
-	for (int in = 0; m_Data[in] != '\0'; in++)
+	std::cout << "Prepend: ";
+	for (int in = 0; m_Data[in] != '\0'; ++in)
 	{
 		std::cout << m_Data[in];
 	}
 	std::cout << "\n \n";
 }
 
+const char * MyString::constCStyle() //Problem 6
+{
+	const char * constCString = m_Data;
+	std::cout << "Const Char *: " << constCString << "\n \n";
+	return constCString;
+}
+
 bool MyString::uppercase() //Problem 7
 {
-	for (int x = 0; x < length(); x++)
+	std::cout << "UpperCase: ";
+	for (int i = 0; i < length(); ++i)
 	{
-		if ((int)m_Data[x] > 96 && (int)m_Data[x] < 123)
+		if ((int)m_Data[i] > 96 && (int)m_Data[i] < 123)
 		{
-			m_Data[x] = m_Data[x] - 32;
+			m_Data[i] = m_Data[i] - 32;
 		}
-		std::cout << m_Data[x];
+		std::cout << m_Data[i];
 	}
 	std::cout << "\n \n";
 	return false;
@@ -145,14 +152,80 @@ bool MyString::uppercase() //Problem 7
 
 bool MyString::lowercase() //Problem 8
 {
-	for (int x = 0; x < length(); x++)
+	std::cout << "LowerCase: ";
+	for (int i = 0; i < length(); ++i)
 	{
-		if ((int)m_Data[x] > 64 && (int)m_Data[x] < 91)
+		if ((int)m_Data[i] > 64 && (int)m_Data[i] < 91)
 		{
-			m_Data[x] = m_Data[x] + 32;
+			m_Data[i] = m_Data[i] + 32;
 		}
-		std::cout << m_Data[x];
+		std::cout << m_Data[i];
 	}
 	std::cout << "\n \n";
 	return false;
 }
+
+bool MyString::findSubString() //Problem 9 
+{
+	bool found = false;
+	const char * sub = { "ee" };
+	int x = 0;
+	for (int i = 0; i < length(); ++i)
+	{
+		if (m_Data[i] == sub[x])
+		{
+			x++;
+			if (x == 2);
+			{
+				found = true;
+				break;
+			}
+		}
+		else
+		{
+			x = 0;
+			found = false;
+		}
+	}
+	std::cout << "SubString: " << found << "\n \n";
+	return found;
+}
+
+bool MyString::findSubStringIndex(int input) //Problem 10
+{
+	bool foundIndex = false;
+	const char * subString = { "eel" };
+	int x = 0;
+	for (int i = 0 + input; i < length(); ++i)
+	{
+		if (m_Data[i] == subString[x])
+		{
+			x++;
+			if (x == 2);
+			{
+				foundIndex = true;
+				break;
+			}
+		}
+		else
+		{
+			foundIndex = false;
+		}
+	}
+	std::cout << "SubString at Index: " << foundIndex << "\n \n";
+	return foundIndex;
+}
+bool MyString::replaceSubString()
+{
+	bool found;
+	const char * subString
+}
+
+char * MyString::setString() //Problem 12 
+{
+	char set[255];
+	int i;
+	std::cin.getline(set, 255);
+	return set;
+}
+
