@@ -215,11 +215,50 @@ bool MyString::findSubStringIndex(int input) //Problem 10
 	std::cout << "SubString at Index: " << foundIndex << "\n \n";
 	return foundIndex;
 }
-bool MyString::replaceSubString()
+void MyString::replaceSubString() //Problem 11
 {
-	bool found;
-	const char * subString
+	bool foundReplace;
+	const char * subString = { "xx" };
+	const char * replaceSubString = { "ll" };
+	int x = 0;
+	for (int i = 0; i < length(); ++i)
+	{
+		if (m_Data[i] == subString[x])
+		{
+			x++;
+			if (x == 2)
+			{
+				foundReplace = true;
+				for (int i = 0; i < length(); ++i)
+				{
+					if (m_Data[i] == subString[x])
+					{
+						m_Data[i] = replaceSubString[x];
+						x++;
+					}
+					else
+					{
+						x = 0;
+					}
+				}
+				break;
+			}
+		}
+		else
+		{
+			foundReplace = false;
+			x = 0;
+		}
+	}
+	x = 0;
+	std::cout << "Replace SubString: ";
+	for (int i = 0; m_Data[i] != '\0'; ++i)
+	{
+		std::cout << m_Data[i];
+	}
+	std::cout << "\n \n";
 }
+
 
 char * MyString::setString() //Problem 12 
 {
