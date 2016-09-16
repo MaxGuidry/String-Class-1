@@ -20,12 +20,14 @@ MyString::MyString(char *F) //Constructor definition sets the valuue of the stri
 	int i;
 	for (i = 0; F[i] != '\0'; ++i) //Loops array and sets values, stops when it reaches null ( End of word )
 	{
-		m_Data[i] = F[i];
+		m_Data[i] = F[i]; //F populates the array of m_Data
+						  //Ends loop once reaches null
 	}
-	m_Data[i] = '\0';
+	m_Data[i] = '\0'; //Sets end of array to null
 }
 // Problem 1
 int MyString::length() 
+
 {
 	return strLength(m_Data); // Calls Length which I set above 
 }
@@ -68,7 +70,7 @@ bool MyString::compare(MyString str)
 		printf("%s is before %s \n \n", m_first, m_second);
 	}
 	return 1;*/
-	// Above is a small example, created by Matthew Williamson
+	// Above is an small example, created by Matthew Williamson
 	bool equal = true;
 	for (int i = 0;; i++) //Loops through the characters in the string and compares it to the second string 
 	{
@@ -148,7 +150,7 @@ void MyString::prepend(MyString str)
 //Functions name: constCStyle
 //Does not take in any arguemnt
 //Returns the string as a basic constant C-Style
-const char * MyString::constCStyle() //Problem 6
+const char * MyString::constCStyle() 
 {
 	const char * constCString = m_Data;
 	std::cout << "Const Char *: " << constCString << "\n \n";
@@ -159,7 +161,7 @@ const char * MyString::constCStyle() //Problem 6
 //Functions name: uppercase
 //Does not take in any arguemnt
 //makes all letters uppercase in the string
-bool MyString::uppercase() //Problem 7
+bool MyString::uppercase() 
 {
 	std::cout << "UpperCase: ";
 	for (int i = 0; i < length(); ++i)
@@ -178,7 +180,7 @@ bool MyString::uppercase() //Problem 7
 //Functions name: lowercase
 //Does not take in any arguemnt
 //Makes all letters lowercase in the string
-bool MyString::lowercase() //Problem 8
+bool MyString::lowercase() 
 {
 	std::cout << "LowerCase: ";
 	for (int i = 0; i < length(); ++i)
@@ -197,14 +199,14 @@ bool MyString::lowercase() //Problem 8
 //Functions name: findSubString
 //Does not take in any arguemnt
 //Searches the string for characters
-bool MyString::findSubString() //Problem 9 
+bool MyString::findSubString() 
 {
 	bool found = false;
 	const char * sub = { "ee" }; //The charcters I set to be searched for
 	int x = 0;
 	for (int i = 0; i < length(); ++i)
 	{
-		if (m_Data[i] == sub[x]) //Checks if the characters at index [i] are the same
+		if (m_Data[i] == sub[x]) //Checks if the characters at index [i] is the same as the set characters above
 		{
 			x++;
 			if (x == 2); //Checks if x == 2 if it is the value of found is now true
@@ -227,25 +229,26 @@ bool MyString::findSubString() //Problem 9
 //Functions name: findSubStringIndex
 //Takes a single argument of type interger
 //Searches the string for characters starting at a index
-bool MyString::findSubStringIndex(int input) //Problem 10
+bool MyString::findSubStringIndex(int input) 
 {
-	bool foundIndex = false;
-	const char * subString = { "eel" };
-	int x = 0;
-	for (int i = 0 + input; i < length(); ++i)
+	bool foundIndex; //True or false to say if its starting at the certain index 
+	const char * sub = { "eel" }; //The characters I set to be searched for 
+	int x = 0; //Variable x with type interger set to be a place hold for the index of the const char *
+	for (int i = input; i < length(); ++i) //Makes a type interger = to my set input and loops to end of word length
 	{
-		if (m_Data[i] == subString[x])
+		if (m_Data[i] == sub[x]) //Checks if the characters at index [i] is the same as the set characters above
 		{
-			x++;
-			if (x == 2);
+			x++; //Increments the x to go to next letter of string 
+			if (x == 3) //Checks if x == 2 if it is the value of found is now true
 			{
-				foundIndex = true;
+				foundIndex = true; //Continues the loop
 				break;
 			}
 		}
-		else
+		else //Or if it is not the value is now 0 and found is now false
 		{
-			foundIndex = false;
+			x = 0;
+			foundIndex = false; //Stops the loop
 		}
 	}
 	std::cout << "SubString at Index: " << foundIndex << "\n \n";
@@ -255,26 +258,26 @@ bool MyString::findSubStringIndex(int input) //Problem 10
 //Functions name: replaceSubString
 //Does not take in any arguemnt
 //Searches the string for characters and if found said characters replaces them 
-void MyString::replaceSubString() //Problem 11
+void MyString::replaceSubString() 
 {
-	bool foundReplace;
-	const char * subString = { "xx" };
-	const char * replaceSubString = { "ll" };
-	int x = 0;
-	for (int i = 0; i < length(); ++i)
+	bool foundReplace; //True or false to say if its starting at the certain index 
+	const char * subString = { "xx" }; //The characters I set to be searched for 
+	const char * replaceSubString = { "ll" }; //The characters I set to replace 
+	int x = 0; //Variable x with type interger set to be a place hold for the index of both subString and replaceSubString
+	for (int i = 0; i < length(); ++i) //Loops that goes through length of word 
 	{
-		if (m_Data[i] == subString[x])
+		if (m_Data[i] == subString[x]) //Checks if the characters at index [i] is the same as the subString[i]
 		{
-			x++;
-			if (x == 2)
+			x++; //Increments the x to go to next letter of string 
+			if (x == 2) //Checks if x == 2 if it is the value of found is now true
 			{
-				foundReplace = true;
-				for (int i = 0; i < length(); ++i)
+				foundReplace = true; //Continues the loop
+				for (int i = 0; i < length(); ++i) //Loops that goes through length of word 
 				{
-					if (m_Data[i] == subString[x])
+					if (m_Data[i] == subString[x]) //Checks if the characters at index [i] is the same as the subString[i]
 					{
-						m_Data[i] = replaceSubString[x];
-						x++;
+						m_Data[i] = replaceSubString[x]; //Replaces the subString with replaceSubString set string
+						x++; //Increments the x to go to next letter of string 
 					}
 					else
 					{
@@ -286,13 +289,13 @@ void MyString::replaceSubString() //Problem 11
 		}
 		else
 		{
-			foundReplace = false;
+			foundReplace = false; //Stops the loop
 			x = 0;
 		}
 	}
 	x = 0;
 	std::cout << "Replace SubString: ";
-	for (int i = 0; m_Data[i] != '\0'; ++i)
+	for (int i = 0; m_Data[i] != '\0'; ++i) //States the new word
 	{
 		std::cout << m_Data[i];
 	}
@@ -307,7 +310,7 @@ char * MyString::setString()
 {
 	char set[255];
 	int i;
-	std::cin.getline(set, 255);
+	std::cin.getline(set, 255); //Reads through the spaces 
 	return set;
 }
 
