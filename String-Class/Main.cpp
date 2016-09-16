@@ -3,12 +3,17 @@
 
 int main()
 {
-	MyString firstString = MyString(firstString.setString());
-	MyString secondString = MyString(secondString.setString());
-	int buttF = firstString.length();
+	printf("Enter words.. \n \n");
+	char f[255];
+	char s[255];
+	std::cin.getline(f, 255);
+	std::cin.getline(s, 255);
+	MyString firstString = MyString(f);
+	MyString secondString = MyString(s);
+	/*int buttF = firstString.length();
 	int buttS = secondString.length();
 	std::cout << "Length of first word: " << buttF << "\n \n";
-	std::cout << "Length of second word: " << buttS << "\n \n";
+	std::cout << "Length of second word: " << buttS << "\n \n";*/
 	int input = 2;
 	firstString.constCStyle();
 	firstString.findSubString();
@@ -16,10 +21,10 @@ int main()
 	firstString.replaceSubString();
 	firstString.index(input);
 	firstString.compare(secondString);
-	firstString.append(secondString);
-	firstString.prepend(secondString);
-	firstString.uppercase();
-	firstString.lowercase();
+	firstString.append("<-Back");
+	firstString.prepend("Front->");
+	firstString.ToUpper();
+	firstString.ToLower();
 	system("pause");
 	return 0;
 }
