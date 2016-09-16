@@ -9,7 +9,7 @@ int main()
 	int buttS = secondString.length();
 	std::cout << "Length of first word: " << buttF << "\n \n";
 	std::cout << "Length of second word: " << buttS << "\n \n";
-	int input = 3;
+	int input = 2;
 	firstString.constCStyle();
 	firstString.findSubString();
 	firstString.findSubStringIndex(input);

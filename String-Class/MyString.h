@@ -9,7 +9,7 @@ public:
 	MyString(char * f);
 
 	int length();
-	void index(int);
+	char index(int);
 	bool compare(MyString s);
 	void append(MyString s);
 	void prepend(MyString s);
