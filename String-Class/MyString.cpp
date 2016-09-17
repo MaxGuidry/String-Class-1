@@ -244,17 +244,17 @@ int MyString::findSubString(const char * sub) //x
 //Functions name: findSubStringIndex
 //Takes a single argument of type interger
 //Searches the string for characters starting at a index
-bool MyString::findSubStringIndex(int input)
+bool MyString::findSubStringIndex(int input, char * sub)
 {
-	bool foundIndex; //True or false to say if its starting at the certain index 
-	const char * sub = { "eel" }; //The characters I set to be searched for 
+	MyString temp = MyString(sub);
+	bool foundIndex = false; //True or false to say if its starting at the certain index  
 	int x = 0; //Variable x with type interger set to be a place hold for the index of the const char *
 	for (int i = input; i < m_length; ++i) //Makes a type interger = to my set input and loops to end of word length
 	{
 		if (m_Data[i] == sub[x]) //Checks if the characters at index [i] is the same as the set characters above
 		{
 			x++; //Increments the x to go to next letter of string 
-			if (x == 3) //Checks if x == 2 if it is the value of found is now true
+			if (x == temp.m_length) //Checks if x == 2 if it is the value of found is now true
 			{
 				foundIndex = true; //Continues the loop
 				break;
@@ -273,7 +273,7 @@ bool MyString::findSubStringIndex(int input)
 //Functions name: replaceSubString
 //Does not take in any arguemnt
 //Searches the string for characters and if found said characters replaces them 
-void MyString::replaceSubString()
+void MyString::Replace()
 {
 	bool foundReplace; //True or false to say if its starting at the certain index 
 	const char * subString = { "xx" }; //The characters I set to be searched for 
@@ -315,6 +315,63 @@ void MyString::replaceSubString()
 		std::cout << m_Data[i];
 	}
 	std::cout << "\n \n";
+}
+
+int MyString::Replace(char * mine, char * sub)
+{
+	MyString m = MyString(mine);
+	MyString newString = MyString(sub);
+	MyString copy = MyString(m_Data);
+	bool match = false;
+	int p = newString.m_length;
+	for (int i = 0; i < this->m_length; i++)
+	{
+		if (this->m_Data[i] == sub[0])
+		{
+			for (int j = 0; j < m.getLength(); j++)
+			{
+				if (this->m_Data[i + j] == m.m_Data[j])
+				{
+					match = true;
+				}
+				else
+				{
+					match = false;
+				}
+				if (j == m.getLength() - 1)
+					return i;
+			}
+		}
+		if (this->m_Data[i] == m.m_Data[0]) //Dont know why this works -> [0]
+		{
+			m_length += newString.m_length - m.m_length;
+			for (int j = 0; j < newString.getLength(); j++)
+			{
+				m_Data[(i + j)-(m.getLength() - 1)] = sub[j];
+				match = true;
+			}
+			if (i <= m_length - newString.m_length)
+			{
+				for (int x = m.getLength(); x < m_length; x++)
+				{
+					m_Data[p] = copy.m_Data[x];
+					p++;
+				}
+			}
+		}
+
+		else if (this->m_Data[i] != m.m_Data[0])
+		{
+			{
+				match = false;
+			}
+		}
+		else
+		{
+			match = false;
+		}
+	}
+	return 0;
 }
 
 //Problem 12 

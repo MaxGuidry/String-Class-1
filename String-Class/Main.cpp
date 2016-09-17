@@ -14,12 +14,11 @@ int main()
 	int buttS = secondString.length();
 	std::cout << "Length of first word: " << buttF << "\n \n";
 	std::cout << "Length of second word: " << buttS << "\n \n";*/
-	int input = 2;
 	firstString.constCStyle();
 	firstString.findSubString();
-	firstString.findSubStringIndex(input);
-	firstString.replaceSubString();
-	firstString.index(input);
+	std::cout << firstString.findSubStringIndex(2, "kill");
+	std::cout << firstString.Replace("a", "bed") << "\n \n";
+	std::cout << "Print at Index: " << firstString.index(2) << "\n \n";
 	firstString.compare(secondString);
 	firstString.append("<-Back");
 	firstString.prepend("Front->");

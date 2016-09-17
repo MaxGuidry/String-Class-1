@@ -19,10 +19,10 @@ public:
 	int findSubString(const char *c);
 	char * setString();
 	void setString(char[]);
-	bool findSubStringIndex(int);
+	bool findSubStringIndex(int, char *);
 	const char * constCStyle();
-	void replaceSubString();
-	void replaceSubString(const char * c, const char *b);
+	void Replace();
+	int Replace(char *, char *);
 private:
 	char m_Data[255]; 
 	int m_length;
