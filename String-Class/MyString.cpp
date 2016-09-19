@@ -1,7 +1,5 @@
 #include <iostream>
 #include "MyString.h"
-
-
 MyString::MyString(char *F) //Constructor definition sets the valuue of the string
 {
 	int i;
@@ -26,7 +24,7 @@ int MyString::getLength()
 //Takes in an interger which is set as "input" 
 char MyString::index(int input)
 {
-	std::cout << "Print at Index: " << m_Data[input] << "\n \n";
+	m_Data[input];
 	return m_Data[input];
 }
 
@@ -65,12 +63,10 @@ bool MyString::compare(MyString str)
 		equal = (m_Data[i] == str.m_Data[i]) ? true : false; //If characters are equal then variable equal with type bool is set true 
 		if (equal == false) //If equal comes out false it breaks out of the loop
 		{
-			std::cout << "Compare: They are not equal \n \n"; //Console will state this before it breaks
 			break;
 		}
 		if (equal == true) //If equal comes out true it breaks out of the loop
 		{
-			std::cout << "Compare: They are equal \n \n"; //Console will state this before it breaks
 			break;
 		}
 	}
@@ -81,7 +77,7 @@ bool MyString::compare(MyString str)
 //Functions name: append
 //Takes a single argument of type MyString
 //Appends the second string to first string
-void MyString::append(MyString str)
+char * MyString::append(MyString str)
 {
 	int oldLength = this->m_length; //Creates a variable called oldLength with type interger that is now equal to the length
 	int i;
@@ -89,49 +85,37 @@ void MyString::append(MyString str)
 	{
 		m_Data[oldLength + i] = str.m_Data[i]; //Sets the second word to now append to the first
 	}
-	m_Data[oldLength + i] = '\0'; //Ends loop once it hits end of string 
-	std::cout << "Append: ";
-	for (int in = 0; m_Data[in] != '\0'; in++) //Loop prints the new string which is the two appended
-	{
-		std::cout << m_Data[in];
-	}
-	std::cout << "\n \n";
+	m_Data[oldLength + i] = '\0'; //Ends loop once it hits end of string
+	m_length = i + oldLength;
+	return m_Data;
 }
 
 //Problem 5
 //Functions name: prepend
 //Takes a single argument of type MyString
 //Prepends the second string to the appended string above 
-void MyString::prepend(MyString str)
+char * MyString::prepend(MyString str)
 {
 	char newString[255]; //The array of characters that will copy the current string
-
 	int i;
-	for (i = 0; i < str.m_length; ++i) //Loops through the second word entered until it hits the end of the word
+	for (i = 0; i < m_length; ++i) //Loops through the second word entered until it hits the end of the word
 	{
-		newString[i] = str.m_Data[i];
+		newString[i] = m_Data[i];
 	}
 	newString[i] = '\0'; //Ends loop once it hits end of string 
-
-	int oldLength = m_length;
-
+	int oldLength = str.m_length;
 	for (i = 0; i < getLength(); ++i) //Moves the current first string
 	{
-		newString[oldLength + i] = m_Data[i];
+		m_Data[oldLength + i] = newString[i];
 	}
 	newString[oldLength + i] = '\0'; //Ends loop once it hits end of string 
-
-	for (i = 0; i < m_length; ++i) //Places the second string in front of the first string
+	for (i = 0; i < str.m_length; ++i) //Places the second string in front of the first string
 	{
-		m_Data[i] = newString[i];
+		m_Data[i] = str.m_Data[i];
 	}
-	m_Data[i] = '\0'; //Ends loop once it hits end of string 
-	std::cout << "Prepend: ";
-	for (int in = 0; m_Data[in] != '\0'; ++in) //Loops to print new string below
-	{
-		std::cout << m_Data[in];
-	}
-	std::cout << "\n \n";
+	m_Data[i + m_length] = '\0'; //Ends loop once it hits end of string 
+	m_length += str.m_length;
+	return m_Data;
 }
 
 //Problem 6
@@ -141,7 +125,6 @@ void MyString::prepend(MyString str)
 const char * MyString::constCStyle()
 {
 	const char * constCString = m_Data;
-	std::cout << "Const Char *: " << constCString << "\n \n";
 	return constCString;
 }
 
@@ -149,38 +132,32 @@ const char * MyString::constCStyle()
 //Functions name: uppercase
 //Does not take in any arguemnt
 //makes all letters uppercase in the string
-bool MyString::ToUpper()
+char * MyString::ToUpper()
 {
-	std::cout << "UpperCase: ";
 	for (int i = 0; i < getLength(); ++i)
 	{
 		if ((int)m_Data[i] > 96 && (int)m_Data[i] < 123) //Uses the Ascii Table to check if each character is lowercase or not
 		{
 			m_Data[i] = m_Data[i] - 32; //If they are then change its integer value to Ascii Tables value for uppercase
 		}
-		std::cout << m_Data[i]; //Prints the brand new string
 	}
-	std::cout << "\n \n";
-	return false;
+	return m_Data;
 }
 
 //Problem 8
 //Functions name: lowercase
 //Does not take in any arguemnt
 //Makes all letters lowercase in the string
-bool MyString::ToLower()
+char * MyString::ToLower()
 {
-	std::cout << "LowerCase: ";
 	for (int i = 0; i < getLength(); ++i)
 	{
 		if ((int)m_Data[i] > 64 && (int)m_Data[i] < 91) //Uses the Ascii Table to check if each character is uppercase or not
 		{
 			m_Data[i] = m_Data[i] + 32; //If they are then change its integer value to Ascii Tables value for lowercase
 		}
-		std::cout << m_Data[i]; //Prints the brand new string
 	}
-	std::cout << "\n \n";
-	return false;
+	return m_Data;
 }
 
 //Problem 9
@@ -209,11 +186,10 @@ bool MyString::findSubString()
 			found = false;
 		}
 	}
-	std::cout << "SubString: " << found << "\n \n";
 	return found;
 }
 
-int MyString::findSubString(char * sub) //x
+bool MyString::findSubString(char * sub) //x
 {
 	MyString tmp = MyString(sub);
 	bool match = false;
@@ -232,12 +208,10 @@ int MyString::findSubString(char * sub) //x
 				{
 					match = false;
 				}
-				if (j == tmp.getLength() - 1)
-					return i;
 			}
 		}
 	}
-	return 0;
+	return match;
 }
 
 //Problem 10
@@ -266,7 +240,6 @@ bool MyString::findSubStringIndex(int input, char * sub)
 			foundIndex = false; //Stops the loop
 		}
 	}
-	std::cout << "SubString at Index: " << foundIndex << "\n \n";
 	return foundIndex;
 }
 //Problem 11
@@ -317,7 +290,7 @@ void MyString::Replace()
 	std::cout << "\n \n";
 }
 
-int MyString::Replace(char * mine, char * sub)
+char * MyString::Replace(char * mine, char * sub)
 {
 	MyString m = MyString(mine);
 	MyString newString = MyString(sub);
@@ -341,8 +314,6 @@ int MyString::Replace(char * mine, char * sub)
 				{
 					match = false;
 				}
-				if (j == m.getLength() - 1)
-					return i;
 			}
 		}
 		if (this->m_Data[i] == m.m_Data[p]) //Dont know why this works -> [0]
@@ -399,28 +370,5 @@ int MyString::Replace(char * mine, char * sub)
 		m_Data[m_length] = '\0';
 		follow++;
 	}
-	return 0;
-}
-
-//Problem 12 
-//Functions name: getString
-//Does not take in any arguemnt
-//Gets the string from a users input
-//char * MyString::setString()
-//{
-//	char set[255];
-//	std::cin.getline(set, 255); //Reads through the spaces 
-//	return set;
-//}
-
-void MyString::setString(char set[])
-{
-	MyString tmp = MyString(set);
-
-	int i = 0;
-	for (i = 0; i < tmp.getLength(); i++)
-		m_Data[i] = tmp.m_Data[i];
-	m_Data[i] = '\0';
-	m_length = tmp.getLength();
-	return;
+	return m_Data;
 }
