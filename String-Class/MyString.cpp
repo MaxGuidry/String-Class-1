@@ -2,7 +2,7 @@
 #include "MyString.h"
 
 
-MyString::MyString(const char *F) //Constructor definition sets the valuue of the string
+MyString::MyString(char *F) //Constructor definition sets the valuue of the string
 {
 	int i;
 	for (i = 0; F[i] != '\0'; ++i) //Loops array and sets values, stops when it reaches null ( End of word )
@@ -213,7 +213,7 @@ bool MyString::findSubString()
 	return found;
 }
 
-int MyString::findSubString(const char * sub) //x
+int MyString::findSubString(char * sub) //x
 {
 	MyString tmp = MyString(sub);
 	bool match = false;
@@ -323,9 +323,12 @@ int MyString::Replace(char * mine, char * sub)
 	MyString newString = MyString(sub);
 	MyString copy = MyString(m_Data);
 	bool match = false;
-	int p = newString.m_length;
+	int p = 0;
+	int follow = 0;
+	int copyIn = 0;
 	for (int i = 0; i < this->m_length; i++)
 	{
+		copyIn = follow;
 		if (this->m_Data[i] == sub[0])
 		{
 			for (int j = 0; j < m.getLength(); j++)
@@ -342,20 +345,43 @@ int MyString::Replace(char * mine, char * sub)
 					return i;
 			}
 		}
-		if (this->m_Data[i] == m.m_Data[0]) //Dont know why this works -> [0]
+		if (this->m_Data[i] == m.m_Data[p]) //Dont know why this works -> [0]
 		{
-			m_length += newString.m_length - m.m_length;
-			for (int j = 0; j < newString.getLength(); j++)
+			p++;
+			if (p == m.m_length)
 			{
-				m_Data[(i + j)-(m.getLength() - 1)] = sub[j];
-				match = true;
-			}
-			if (i <= m_length - newString.m_length)
-			{
-				for (int x = m.getLength(); x < m_length; x++)
+				p = 0;
+				if (m.m_length <= newString.m_length)
 				{
-					m_Data[p] = copy.m_Data[x];
-					p++;
+					m_length += newString.m_length - m.m_length;
+				}
+				else
+				{
+					m_length -= m.m_length - newString.m_length;
+				}
+				copyIn++;
+				for (int j = 0; j < newString.getLength(); j++)
+				{
+					m_Data[(i + j) - (m.getLength() - 1)] = newString.m_Data[j];
+					match = true;
+				}
+				if (i <= m_length - newString.m_length)
+				{
+					int holder = copyIn;
+					for (int x = i - m.m_length + newString.m_length + 1; x < m_length; x++)
+					{
+						m_Data[x] = copy.m_Data[copyIn];
+						copyIn++;
+					}
+					copyIn = holder;
+				}
+				if (m.m_length < newString.m_length)
+				{
+					i += newString.m_length - m.m_length;
+				}
+				else if (m.m_length > newString.m_length)
+				{
+					i -= m.m_length - newString.m_length;
 				}
 			}
 		}
@@ -370,6 +396,8 @@ int MyString::Replace(char * mine, char * sub)
 		{
 			match = false;
 		}
+		m_Data[m_length] = '\0';
+		follow++;
 	}
 	return 0;
 }

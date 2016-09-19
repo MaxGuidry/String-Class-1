@@ -6,7 +6,7 @@ class MyString
 {
 public:
 	MyString() {};
-	MyString(const char * f);
+	MyString(char * f);
 	//int strLength(char *str);
 	int getLength();
 	char index(int);
@@ -16,7 +16,7 @@ public:
 	bool ToUpper();
 	bool ToLower();
 	bool findSubString();
-	int findSubString(const char *c);
+	int findSubString(char *c);
 	char * setString();
 	void setString(char[]);
 	bool findSubStringIndex(int, char *);

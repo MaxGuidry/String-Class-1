@@ -17,7 +17,7 @@ int main()
 	firstString.constCStyle();
 	firstString.findSubString();
 	std::cout << firstString.findSubStringIndex(2, "kill");
-	std::cout << firstString.Replace("a", "bed") << "\n \n";
+	std::cout << firstString.Replace("aa", "A") << "\n \n";
 	std::cout << "Print at Index: " << firstString.index(2) << "\n \n";
 	firstString.compare(secondString);
 	firstString.append("<-Back");
