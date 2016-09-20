@@ -19,7 +19,7 @@ int main()
 	std::cout << "Length of first word: " << firstString.getLength() << "\n";
 	std::cout << "Length of second word: " << secondString.getLength() << "\n";
 	std::cout << "Const char *: " << firstString.constCStyle() << "\n \n";
-	std::cout << "There is an 'a in word: ";
+	std::cout << "There is an 'a' in word: ";
 	(firstString.findSubString("a") == 1) ? std::cout << "True \n" : std::cout << "False \n";
 	std::cout << "'a' = index (2): " << firstString.findSubStringIndex(2, "a") << "\n";
 	std::cout << "Replacing all 'a's with 'A's: " << firstString.Replace("a", "A") << "\n \n";
