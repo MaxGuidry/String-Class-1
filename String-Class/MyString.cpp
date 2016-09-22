@@ -34,29 +34,6 @@ char MyString::index(int input)
 //Comapares each character that is inside of the string to check if they are equal
 bool MyString::compare(MyString str)
 {
-	/*int equal = strcmp(m_first, m_second);
-	if ((equal) == 0)
-	{
-		printf("They are the same \n \n");
-	}
-	else
-	{
-		printf("They are not the same \n \n");
-	}
-	if (strcmp(m_first, m_second) == 0)
-	{
-		printf("%s is equal %s \n \n", m_first, m_second);
-	}
-	else if (strcmp(m_first, m_second) == 1)
-	{
-		printf("%s is after %s \n \n", m_first, m_second);
-	}
-	else if (strcmp(m_first, m_second) == -1)
-	{
-		printf("%s is before %s \n \n", m_first, m_second);
-	}
-	return 1;*/
-	// Above is an small example, created by Matthew Williamson
 	bool equal = true;
 	for (int i = 0;; i++) //Loops through the characters in the string and compares it to the second string 
 	{
@@ -159,11 +136,7 @@ char * MyString::ToLower()
 	}
 	return m_Data;
 }
-
-//Problem 9
-//Functions name: findSubString
-//Does not take in any arguemnt
-//Searches the string for characters
+// ----------------------------------------------------------------------------NOT WORKING------------------------------------------------------------------------------------------
 bool MyString::findSubString()
 {
 	bool found = false;
@@ -188,7 +161,12 @@ bool MyString::findSubString()
 	}
 	return found;
 }
+// ----------------------------------------------------------------------------NOT WORKING------------------------------------------------------------------------------------------
 
+//Problem 9
+//Functions name: findSubString
+//Does not take in any arguemnt
+//Searches the string for characters
 bool MyString::findSubString(char * sub) //x
 {
 	MyString tmp = MyString(sub);
@@ -242,10 +220,7 @@ bool MyString::findSubStringIndex(int input, char * sub)
 	}
 	return foundIndex;
 }
-//Problem 11
-//Functions name: replaceSubString
-//Does not take in any arguemnt
-//Searches the string for characters and if found said characters replaces them 
+// ----------------------------------------------------------------------------NOT WORKING------------------------------------------------------------------------------------------
 void MyString::Replace()
 {
 	bool foundReplace; //True or false to say if its starting at the certain index 
@@ -289,7 +264,12 @@ void MyString::Replace()
 	}
 	std::cout << "\n \n";
 }
+// ----------------------------------------------------------------------------NOT WORKING------------------------------------------------------------------------------------------
 
+//Problem 11
+//Functions name: replaceSubString
+//Does not take in any arguemnt
+//Searches the string for characters and if found said characters replaces them 
 char * MyString::Replace(char * mine, char * sub)
 {
 	MyString m = MyString(mine);

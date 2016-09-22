@@ -20,8 +20,8 @@ int main()
 	std::cout << "Length of second word: " << secondString.getLength() << "\n";
 	std::cout << "Const char *: " << firstString.constCStyle() << "\n \n";
 	std::cout << "There is an 'a' in word: ";
-	(firstString.findSubString("a") == 1) ? std::cout << "True \n" : std::cout << "False \n";
-	std::cout << "'a' = index (2): " << firstString.findSubStringIndex(2, "a") << "\n";
+	(firstString.findSubString("Move North?") == 1) ? std::cout << "True \n" : std::cout << "False \n";
+	std::cout << "'a' starting or past index (2): " << firstString.findSubStringIndex(2, "a") << "\n";
 	std::cout << "Replacing all 'a's with 'A's: " << firstString.Replace("a", "A") << "\n \n";
 	std::cout << "Print at Index (2): " << firstString.index(2) << "\n";
 	std::cout << "Compare: ";
