@@ -14,4 +14,5 @@ Room::Room(bool EastDoor, bool WestDoor, bool NorthDoor, bool SouthDoor, bool Em
 void Room::PrintInfo()
 {
 	std::cout << m_Text << std::endl;
+	
 }
