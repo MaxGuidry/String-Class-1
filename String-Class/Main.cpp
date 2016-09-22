@@ -47,7 +47,6 @@ int main()
 			Sleep(0);
 		}
 	}
-
 	PlaySound(TEXT("C:\\Users\\max.guidry\\Downloads\\Prayer Position Instrumental"), NULL, SND_ASYNC);
 	system("pause");
 	return 0;
