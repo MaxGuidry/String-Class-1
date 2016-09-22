@@ -316,7 +316,7 @@ char * MyString::Replace(char * mine, char * sub)
 				}
 			}
 		}
-		if (this->m_Data[i] == m.m_Data[p]) //Dont know why this works -> [0]
+		if (this->m_Data[i] == m.m_Data[p]) //Dont know why this works 
 		{
 			p++;
 			if (p == m.m_length)
