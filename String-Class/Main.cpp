@@ -1,12 +1,15 @@
 #include <iostream>
 #include "MyString.h"
-#include "Rooms.h"]
+#include "Rooms.h"
+#include"Player.h"
 #include<Windows.h>
 
 int main()
 {
+	bool isGameWon = false;
 	char Name[255];
 	std::cin.getline(Name, 255);
+	Player PlayerOne = Player(Name, 0, 0, 0, 0, 0);
 	std::cout << Name << std::endl;
 	Room Room1 = Room(1, 0, 0, 1, 1, "There are doors to the east and south.\nWhat will you do?");
 	Room Room2 = Room(1, 1, 0, 0, 1, "You are in a dark and damp room. \nThere are doors to the east and west. \nWhat will you do?");
@@ -41,6 +44,32 @@ int main()
 		{Room16,Room17,Room18,Room19,Room20},
 		{Room21,Room22,Room23,Room24,Room25}
 	};
+	while (isGameWon == false)
+	{
+		Rooms[PlayerOne.m_positionY][PlayerOne.m_positionX].PrintInfo();
+		char PlayerResponse[255];
+		std::cin.getline(PlayerResponse, 255);
+		MyString Response = MyString(PlayerResponse);
+		Response.ToLower();
+		if (Response.findSubString("move east") == true&&Rooms[PlayerOne.m_positionY][PlayerOne.m_positionX].m_EastDoor==true)
+		{
+			PlayerOne.moveEast();
+		}
+		else if (Response.findSubString("move south") == true && Rooms[PlayerOne.m_positionY][PlayerOne.m_positionX].m_SouthDoor == true)
+		{
+			PlayerOne.moveSouth();
+		}
+		else if (Response.findSubString("move west") == true && Rooms[PlayerOne.m_positionY][PlayerOne.m_positionX].m_WestDoor == true)
+		{
+			PlayerOne.moveWest();
+		}
+		else if (Response.findSubString("move north") == true && Rooms[PlayerOne.m_positionY][PlayerOne.m_positionX].m_NorthDoor == true)
+		{
+			PlayerOne.moveNorth();
+		}
+		
+	}
+
 	//testing the print function
 	for (int j = 0; j < 5; j++)
 	{
