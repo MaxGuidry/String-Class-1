@@ -5,6 +5,9 @@
 
 int main()
 {
+	char Name[255];
+	std::cin.getline(Name, 255);
+	std::cout << Name << std::endl;
 	Room Room1 = Room(1, 0, 0, 1, 1, "There are doors to the east and south.\nWhat will you do?");
 	Room Room2 = Room(1, 1, 0, 0, 1, "You are in a dark and damp room. \nThere are doors to the east and west. \nWhat will you do?");
 	Room Room3 = Room(1, 1, 0, 1, 0, "You walk in and notice a big red button on the wall.\nThere are doors to the east, west and south.\nWhat will you do?");
@@ -19,17 +22,17 @@ int main()
 	Room Room12 = Room(1, 1, 0, 1, 0, "You enter the room and see a werewolf staring at you and licking its lips.\nThere are doors to the east, north and south , but the werewolf is blocking the way.\n");
 	Room Room13 = Room(1, 1, 1, 0, 1, "You enter the room with doors to the east, west and north.\nThe eastern door is closed and has some strange markings on it.\nWhat will you do?");//TODO COME BACK TO THIS SINCE EAST DOOR IS A PUZZLE DOOR
 	Room Room14 = Room(1, 1, 1, 0, 0, "You enter the room with doors to the east, west and north.\nIn the middle of the room there is a sword lying on the ground.\nWhat will you do?");
-	Room Room15 = Room(0, 1, 0, 1, 0, "You enter the room and see a giant cyclops looking down on you.\nwith doors to the west and south.\n");
-	Room Room16 = Room(1, 0, 1, 1, 1, "");//TODO COME BACK TO THIS SOUTH DOOR IS A HIDDEN DOOR 
-	Room Room17 = Room(1, 1, 1, 1, 1, "");
-	Room Room18 = Room(1, 1, 0, 1, 1, "");//TODO COME BACK TO THIS SOUTH DOOR NEEDS KEY
-	Room Room19 = Room(1, 1, 0, 1, 1, "");
-	Room Room20 = Room(0, 1, 1, 1, 1, "");
-	Room Room21 = Room(0, 0, 1, 0, 0, "");
-	Room Room22 = Room(0, 0, 1, 0, 0, "");
-	Room Room23 = Room(0, 0, 1, 0, 0, "");
-	Room Room24 = Room(1, 0, 1, 0, 1, "");
-	Room Room25 = Room(0, 1, 1, 0, 0, "");
+	Room Room15 = Room(0, 1, 0, 1, 0, "You enter the room and see a giant cyclops looking down on you.\nwThere are doors to the west and south.\nWhat will you do?");
+	Room Room16 = Room(1, 0, 1, 1, 1, "You enter the room with doors to the east and north.\nYou notice a large crack in the south wall.\nWhat will you do?");//TODO COME BACK TO THIS SOUTH DOOR IS A HIDDEN DOOR 
+	Room Room17 = Room(1, 1, 1, 1, 1, "You enter the room with doors on every side.\nWhat will you do?");
+	Room Room18 = Room(1, 1, 0, 1, 1, "You enter the room with doors to the east, west and south.\nWhat will you do?");//TODO COME BACK TO THIS SOUTH DOOR NEEDS KEY
+	Room Room19 = Room(1, 1, 0, 1, 1, "You enter the room with doors to the east, west and south.\nWhat will you do?");
+	Room Room20 = Room(0, 1, 1, 1, 1, "You enter the room with doors to the west, north and south.\nWhat will you do?");
+	Room Room21 = Room(0, 0, 1, 0, 0, "You enter through the secret door and find...");//TODO Make something funny and dumb happen here
+	Room Room22 = Room(0, 0, 1, 0, 0, "You enter the room and see a large key on the ground.\nThere is only a door to the north.\nWhat will you do?");
+	Room Room23 = Room(0, 0, 1, 0, 0, "You enter the room and see the ");//TODO name or describe boss here
+	Room Room24 = Room(1, 0, 1, 0, 1, "You enter the room with doors to the east and north.\nWhat will you do?");
+	Room Room25 = Room(0, 1, 1, 0, 0, "You enter the room looking at a large pool of swirling blue liquid.\nThe glow from the liquid entices you.\nWhat will you do?");
 	Room Rooms[5][5] =
 	{
 		{Room1,Room2,Room3,Room4,Room5},
@@ -44,10 +47,10 @@ int main()
 		for (int i = 0; i < 5; i++)
 		{
 			Rooms[j][i].PrintInfo();
-			Sleep(0);
+			//Sleep(100);
 		}
 	}
-	PlaySound(TEXT("C:\\Users\\max.guidry\\Downloads\\Prayer Position Instrumental"), NULL, SND_ASYNC);
+	//PlaySound(TEXT("C:\\Users\\max.guidry\\Downloads\\Prayer Position Instrumental"), NULL, SND_ASYNC);
 	system("pause");
 	return 0;
 }
