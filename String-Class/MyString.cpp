@@ -171,22 +171,22 @@ bool MyString::findSubString(char * sub) //x
 {
 	MyString tmp = MyString(sub);
 	bool match = false;
-
-	for (int i = 0; i < this->m_length; i++)
+	int x = 0;
+	for (int i = 0; i < m_length; i++)
 	{
-		if (this->m_Data[i] == sub[0])
+		if (m_Data[i] == sub[x])
 		{
-			for (int j = 0; j < tmp.getLength(); j++)
+			x++;
+			if (x == tmp.m_length)
 			{
-				if (this->m_Data[i + j] == tmp.m_Data[j])
-				{
-					match = true;
-				}
-				else
-				{
-					match = false;
-				}
+				match = true;
+				break;
 			}
+		}
+		else
+		{
+			match = false;
+			x = 0;
 		}
 	}
 	return match;
