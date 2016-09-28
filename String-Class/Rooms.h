@@ -3,9 +3,8 @@
 class Room
 {
 public:
-	Room() {};
-	Room(bool, bool, bool, bool, bool, const char *,bool,bool,bool,bool);
-	Room(bool, bool, bool, bool, bool, char *, const char *);
+	Room() {}
+	Room(bool, bool, bool, bool, bool, const char *, bool, bool, bool, bool,bool,bool);
 	bool m_EastDoor;
 	bool m_NorthDoor;
 	bool m_SouthDoor;
@@ -18,7 +17,8 @@ public:
 	bool m_HasTreasureKey;
 	bool m_HasSword;
 	bool m_HasEnemy;
+	bool m_HasDeathButton;
+	bool m_HasTrapHole;
 private:
-
 	const char * m_Text;
 };

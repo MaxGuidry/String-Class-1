@@ -2,7 +2,8 @@
 #include<iostream>
 #include<Windows.h>
 
-Room::Room(bool EastDoor, bool WestDoor, bool NorthDoor, bool SouthDoor, bool Empty, const char * Text, bool Key, bool BossKey, bool Sword, bool Enemy)
+
+Room::Room(bool EastDoor, bool WestDoor, bool NorthDoor, bool SouthDoor, bool Empty, const char * Text, bool Key, bool BossKey, bool Sword, bool Enemy, bool RedButton,bool TrapHole)
 {
 	m_EastDoor = EastDoor;
 	m_WestDoor = WestDoor;
@@ -14,17 +15,10 @@ Room::Room(bool EastDoor, bool WestDoor, bool NorthDoor, bool SouthDoor, bool Em
 	m_HasBossKey = BossKey;
 	m_HasSword = Sword;
 	m_HasEnemy = Enemy;
+	m_HasDeathButton = RedButton;
+	m_HasTrapHole = TrapHole;
 }
-Room::Room(bool EastDoor, bool WestDoor, bool NorthDoor, bool SouthDoor, bool Empty, char * Item,const char * Text)
-{
-	m_EastDoor = EastDoor;
-	m_WestDoor = WestDoor;
-	m_NorthDoor = NorthDoor;
-	m_SouthDoor = SouthDoor;
-	m_Empty = Empty;
-	m_Text = Text;
-	m_Item = Item;
-}
+
 
 bool Room::openDoor()
 {

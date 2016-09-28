@@ -1,10 +1,13 @@
 #pragma once
-
+#include "Rooms.h"
+#include "MyString.h"
 class Player
 {
 public:
 	Player() {};
 	Player(char*,bool,bool,bool,int,int);
+	int CheckResponce(MyString,Room [][5]);
+	char * Responce();
 	int moveNorth();
 	int m_positionX;
 	int m_positionY;
