@@ -35,7 +35,7 @@ int Player::moveNorth()
 	return m_positionY;
 }
 
-char * Player::Responce()
+char * Player::Response()
 {
 	char PlayerResponse[255];
 	std::cin.getline(PlayerResponse, 255);
@@ -43,48 +43,84 @@ char * Player::Responce()
 	return PlayerResponse;
 }
 
-int Player::CheckResponce(MyString Response, Room Rooms[][5])
+int Player::CheckResponse(MyString Answer, Room Rooms[][5])
 {
-	if (Response.findSubString("move") == true)
+	if (Answer.compare("help") == true)
 	{
-		if (Response.findSubString("east") == true && Rooms[m_positionY][m_positionX].m_EastDoor == true)
+		CheckResponse(Response(), Rooms);
+	}
+	else if (Answer.findSubString("move") == true)
+	{
+		if (Answer.findSubString("east") == true)
 		{
-			moveEast();
+			if (Rooms[m_positionY][m_positionX].m_EastDoor == false)
+			{
+				std::cout << "Are you retarded? Try again." << std::endl;
+				CheckResponse(Response(), Rooms);
+			}
+			else
+			{
+				moveEast();
+			}
 		}
-		else if (Response.findSubString("south") == true && Rooms[m_positionY][m_positionX].m_SouthDoor == true)
+		else if (Answer.findSubString("south") == true)
 		{
-			moveSouth();
+			if (Rooms[m_positionY][m_positionX].m_SouthDoor == false)
+			{
+				std::cout << "Are you retarded? Try again." << std::endl;
+				CheckResponse(Response(), Rooms);
+			}
+			else
+			{
+				moveSouth();
+			}
 		}
-		else if (Response.findSubString("west") == true && Rooms[m_positionY][m_positionX].m_WestDoor == true)
+		else if (Answer.findSubString("west") == true && Rooms[m_positionY][m_positionX].m_WestDoor == true)
 		{
-			moveWest();
+			if (Rooms[m_positionY][m_positionX].m_WestDoor == false)
+			{
+				std::cout << "Are you retarded? Try again." << std::endl;
+				CheckResponse(Response(), Rooms);
+			}
+			else
+			{
+				moveWest();
+			}
 		}
-		else if (Response.findSubString("north") == true && Rooms[m_positionY][m_positionX].m_NorthDoor == true)
+		else if (Answer.findSubString("north") == true && Rooms[m_positionY][m_positionX].m_NorthDoor == true)
 		{
-			moveNorth();
+			if (Rooms[m_positionY][m_positionX].m_NorthDoor == false)
+			{
+				std::cout << "Are you retarded? Try again." << std::endl;
+				CheckResponse(Response(), Rooms);
+			}
+			else
+			{
+				moveNorth();
+			}
 		}
 	}
-	else if (Response.findSubString("grab") == true || Response.findSubString("pickup") == true)
+	else if (Answer.findSubString("grab") == true || Answer.findSubString("pickup") == true)
 	{
-		if (Response.findSubString("key") && Rooms[m_positionY][m_positionX].m_HasTreasureKey == true)
+		if (Answer.findSubString("key") && Rooms[m_positionY][m_positionX].m_HasTreasureKey == true)
 		{
 			std::cout << "You picked up the treasure key." << std::endl;
 
 			m_hasTreasure = true;
 		}
-		else if (Response.findSubString("sword") && Rooms[m_positionY][m_positionX].m_HasSword == true)
+		else if (Answer.findSubString("sword") && Rooms[m_positionY][m_positionX].m_HasSword == true)
 		{
 			std::cout << "You picked up the shining shortsword." << std::endl;
 			m_hasSword = true;
 		}
-		else if (Response.findSubString("key") && Rooms[m_positionY][m_positionX].m_HasBossKey == true)
+		else if (Answer.findSubString("key") && Rooms[m_positionY][m_positionX].m_HasBossKey == true)
 		{
 			std::cout << "You picked up the key to the boss room." << std::endl;
 
 			m_hasBossKey = true;
 		}
 	}
-	else if (Response.findSubString("fight") && Rooms[m_positionY][m_positionX].m_HasEnemy == true)
+	else if (Answer.findSubString("fight") && Rooms[m_positionY][m_positionX].m_HasEnemy == true)
 	{
 		if (m_hasSword == false)
 		{
@@ -97,26 +133,31 @@ int Player::CheckResponce(MyString Response, Room Rooms[][5])
 			std::cout << "You stabbed the creature in the chest and killed it.\nWhat will you do?";
 		}
 	}
-	else if (Response.findSubString("press") && Rooms[m_positionY][m_positionX].m_HasDeathButton == true)
+	else if (Answer.findSubString("press") && Rooms[m_positionY][m_positionX].m_HasDeathButton == true)
 	{
 		std::cout << "You pressed the button and spikes shot out from in front of you impaling you in 50 different places..." << std::endl;
 		Sleep(2000);
 		return -1;
 	}
-	else if ((Response.findSubString("go down") || Response.findSubString("jump down")) && Rooms[m_positionY][m_positionX].m_HasTrapHole == true)
+	else if ((Answer.findSubString("go down") || Answer.findSubString("jump down")) && Rooms[m_positionY][m_positionX].m_HasTrapHole == true)
 	{
 		std::cout << "You went down into the hole and landed on a bed of spikes..." << std::endl;
 		Sleep(2000);
 		return -1;
 	}
-	else if (Response.findSubString("drink") || Response.findSubString("eat"))
+	else if (Answer.findSubString("drink") || Answer.findSubString("eat"))
 	{
-		std::cout << "You drank the strange liquid and you were teleported to a random room."<<std::endl;
+		std::cout << "You drank the strange liquid and you were teleported to a random room." << std::endl;
 		do
 		{
 			m_positionX = rand() % 5;
 			m_positionY = rand() % 5;
-		} while (Rooms[m_positionY][m_positionX].m_HasEnemy == true);
+		} while (Rooms[m_positionY][m_positionX].m_Empty == false);
+	}
+	else
+	{
+		std::cout << "Are you retarded? Try again." << std::endl;
+		CheckResponse(Response(), Rooms);
 	}
 	return 0;
 }

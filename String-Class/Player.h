@@ -6,8 +6,8 @@ class Player
 public:
 	Player() {};
 	Player(char*,bool,bool,bool,int,int);
-	int CheckResponce(MyString,Room [][5]);
-	char * Responce();
+	int CheckResponse(MyString,Room [][5]);
+	char * Response();
 	int moveNorth();
 	int m_positionX;
 	int m_positionY;
@@ -19,6 +19,4 @@ public:
 	bool m_hasBossKey;
 private:
 	char *m_Name;
-	
-	
 };

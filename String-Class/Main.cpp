@@ -3,10 +3,12 @@
 #include "Rooms.h"
 #include"Player.h"
 #include<Windows.h>
+#include<time.h>
 
 int main()
 {
-	//TODO make attacking only available in rooms with enemies
+	srand(time(NULL));
+	//TODO 
 	//TODO stop info from printing after an action is performed
 	bool isGameWon = false;
 	char Name[255];
@@ -49,9 +51,9 @@ int main()
 	while (isGameWon == false)
 	{
 		Rooms[PlayerOne.m_positionY][PlayerOne.m_positionX].PrintInfo();
-		MyString Response = MyString(PlayerOne.Responce());
+		MyString Response = MyString(PlayerOne.Response());
 		Response.ToLower();
-		if (PlayerOne.CheckResponce(Response, Rooms) == -1)
+		if (PlayerOne.CheckResponse(Response, Rooms) == -1)
 			break;
 	}
 	//PlaySound(TEXT("C:\\Users\\max.guidry\\Downloads\\Prayer Position Instrumental"), NULL, SND_ASYNC);
