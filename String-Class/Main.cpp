@@ -6,36 +6,38 @@
 
 int main()
 {
+	//TODO make attacking only available in rooms with enemies
+	//TODO stop info from printing after an action is performed
 	bool isGameWon = false;
 	char Name[255];
 	std::cin.getline(Name, 255);
 	Player PlayerOne = Player(Name, 0, 0, 0, 0, 0);
 	std::cout << Name << std::endl;
-	Room Room1  = Room(1, 0, 0, 1, 1, "There are doors to the east and south.\nWhat will you do?");
-	Room Room2  = Room(1, 1, 0, 0, 1, "You are in a dark and damp room. \nThere are doors to the east and west. \nWhat will you do?");
-	Room Room3  = Room(1, 1, 0, 1, 0, "You walk in and notice a big red button on the wall.\nThere are doors to the east, west and south.\nWhat will you do?");
-	Room Room4  = Room(1, 1, 0, 1, 1, "You enter a room with doors to the east, west and south.\nYou smell fresh air coming from the east.\nWhat will you do?");
-	Room Room5  = Room(0, 1, 0, 0, 0, "You enter the room with only the door behind you and a dak hole in the ground,\nLooking down the hole you see nothing, but you can smell the fresh air.\nWhat will you do?");
-	Room Room6  = Room(1, 0, 1, 1, 1,"treasure", "You enter a room with doors to the east, north and south.\nWhat will you do?");
-	Room Room7  = Room(0, 1, 0, 0, 0, "You enter a room and see a large chest with lock on it.\nWhat will you do?");
-	Room Room8  = Room(0, 0, 1, 1, 1, "You enter a room with doors to the north and south.\nWhat will you do?");
-	Room Room9  = Room(1, 0, 1, 1, 0, "You enter the room and see a large minotaur staring at you.\nThere are doors to the east, north and south , but the minotaur is blocking the way.\nWhat will you do?");
-	Room Room10 = Room(0, 1, 0, 0, 0, "key","You enter the room with only a door to the west where you came from.\nYou notice a key on the ground in front of you.\nWhat will you do?");
-	Room Room11 = Room(1, 0, 1, 1, 1, "You enter the room with doors to the east,north and south.\nWhat will you do?");
-	Room Room12 = Room(1, 1, 0, 1, 0, "You enter the room and see a werewolf staring at you and licking its lips.\nThere are doors to the east, north and south , but the werewolf is blocking the way.\n");
-	Room Room13 = Room(0, 1, 1, 0, 1, "You enter the room with doors to the east, west and north.\nThe eastern door is closed and has some strange markings on it.\nWhat will you do?");//TODO COME BACK TO THIS SINCE EAST DOOR IS A PUZZLE DOOR
-	Room Room14 = Room(1, 1, 1, 0, 0, "sword","You enter the room with doors to the east, west and north.\nIn the middle of the room there is a sword lying on the ground.\nWhat will you do?");
-	Room Room15 = Room(0, 1, 0, 1, 0, "You enter the room and see a giant cyclops looking down on you.\nwThere are doors to the west and south.\nWhat will you do?");
-	Room Room16 = Room(1, 0, 1, 0, 1, "You enter the room with doors to the east and north.\nYou notice a large crack in the south wall.\nWhat will you do?");//TODO COME BACK TO THIS SOUTH DOOR IS A HIDDEN DOOR 
-	Room Room17 = Room(1, 1, 1, 1, 1, "You enter the room with doors on every side.\nWhat will you do?");
-	Room Room18 = Room(1, 1, 0, 0, 1, "You enter the room with doors to the east, west and south.\nWhat will you do?");//TODO COME BACK TO THIS SOUTH DOOR NEEDS KEY
-	Room Room19 = Room(1, 1, 0, 1, 1, "You enter the room with doors to the east, west and south.\nWhat will you do?");
-	Room Room20 = Room(0, 1, 1, 1, 1, "You enter the room with doors to the west, north and south.\nWhat will you do?");
-	Room Room21 = Room(0, 0, 1, 0, 0, "You enter through the secret door and find...");//TODO Make something funny and dumb happen here
-	Room Room22 = Room(0, 0, 1, 0, 0, "Boss key","You enter the room and see a large key on the ground.\nThere is only a door to the north.\nWhat will you do?");
-	Room Room23 = Room(0, 0, 1, 0, 0, "You enter the room and see the ");//TODO name or describe boss here
-	Room Room24 = Room(1, 0, 1, 0, 1, "You enter the room with doors to the east and north.\nWhat will you do?");
-	Room Room25 = Room(0, 1, 1, 0, 0, "You enter the room looking at a large pool of swirling blue liquid.\nThe glow from the liquid entices you.\nWhat will you do?");
+	Room Room1 = Room(1, 0, 0, 1, 1, "There are doors to the east and south.\nWhat will you do?",0,0,0,0);
+	Room Room2 = Room(1, 1, 0, 0, 1, "You are in a dark and damp room. \nThere are doors to the east and west. \nWhat will you do?",0,0,0,0);
+	Room Room3 = Room(1, 1, 0, 1, 0, "You walk in and notice a big red button on the wall.\nThere are doors to the east, west and south.\nWhat will you do?",0,0,0,0);
+	Room Room4 = Room(1, 1, 0, 1, 1, "You enter a room with doors to the east, west and south.\nYou smell fresh air coming from the east.\nWhat will you do?",0,0,0,0);
+	Room Room5 = Room(0, 1, 0, 0, 0, "You enter the room with only the door behind you and a dak hole in the ground,\nLooking down the hole you see nothing, but you can smell the fresh air.\nWhat will you do?",0,0,0,0);
+	Room Room6 = Room(1, 0, 1, 1, 1, "You enter a room with doors to the east, north and south.\nWhat will you do?",0,0,0,0);
+	Room Room7 = Room(0, 1, 0, 0, 0, "You enter a room and see a large chest with lock on it.\nWhat will you do?",0,0,0,0);
+	Room Room8 = Room(0, 0, 1, 1, 1, "You enter a room with doors to the north and south.\nWhat will you do?",0,0,0,0);
+	Room Room9 = Room(1, 0, 1, 1, 0, "You enter the room and see a large minotaur staring at you.\nThere are doors to the east, north and south , but the minotaur is blocking the way.\nWhat will you do?",0,0,0,1);
+	Room Room10 = Room(0, 1, 0, 0, 0,"You enter the room with only a door to the west where you came from.\nYou notice a key on the ground in front of you.\nWhat will you do?",1,0,0,0);
+	Room Room11 = Room(1, 0, 1, 1, 1, "You enter the room with doors to the east,north and south.\nWhat will you do?",0,0,0,0);
+	Room Room12 = Room(1, 1, 0, 1, 0, "You enter the room and see a werewolf staring at you and licking its lips.\nThere are doors to the east, north and south , but the werewolf is blocking the way.\n",0,0,0,1);
+	Room Room13 = Room(1, 1, 1, 0, 1, "You enter the room with doors to the east, west and north.\nThe eastern door is closed and has some strange markings on it.\nWhat will you do?",0,0,0,0);//TODO COME BACK TO THIS SINCE EAST DOOR IS A PUZZLE DOOR
+	Room Room14 = Room(1, 1, 1, 0, 0, "You enter the room with doors to the east, west and north.\nIn the middle of the room there is a sword lying on the ground.\nWhat will you do?",0,0,1,0);
+	Room Room15 = Room(0, 1, 0, 1, 0, "You enter the room and see a giant cyclops looking down on you.\nwThere are doors to the west and south.\nWhat will you do?",0,0,0,1);
+	Room Room16 = Room(1, 0, 1, 0, 1, "You enter the room with doors to the east and north.\nYou notice a large crack in the south wall.\nWhat will you do?",0,0,0,0);//TODO COME BACK TO THIS SOUTH DOOR IS A HIDDEN DOOR 
+	Room Room17 = Room(1, 1, 1, 1, 1, "You enter the room with doors on every side.\nWhat will you do?",0,0,0,0);
+	Room Room18 = Room(1, 1, 0, 0, 1, "You enter the room with doors to the east, west and south.\nWhat will you do?",0,0,0,0);//TODO COME BACK TO THIS SOUTH DOOR NEEDS KEY
+	Room Room19 = Room(1, 1, 0, 1, 1, "You enter the room with doors to the east, west and south.\nWhat will you do?",0,0,0,0);
+	Room Room20 = Room(0, 1, 1, 1, 1, "You enter the room with doors to the west, north and south.\nWhat will you do?",0,0,0,0);
+	Room Room21 = Room(0, 0, 1, 0, 0, "You enter through the secret door and find...",0,0,0,0);//TODO Make something funny and dumb happen here
+	Room Room22 = Room(0, 0, 1, 0, 0, "You enter the room and see a large key on the ground.\nThere is only a door to the north.\nWhat will you do?",0,1,0,0);
+	Room Room23 = Room(0, 0, 1, 0, 0, "You enter the room and see the ",0,0,0,1);//TODO name or describe boss here
+	Room Room24 = Room(1, 0, 1, 0, 1, "You enter the room with doors to the east and north.\nWhat will you do?",0,0,0,0);
+	Room Room25 = Room(0, 1, 1, 0, 0, "You enter the room looking at a large pool of swirling blue liquid.\nThe glow from the liquid entices you.\nWhat will you do?",0,0,0,0);
 	Room Rooms[5][5] =
 	{
 		{Room1,Room2,Room3,Room4,Room5},
@@ -52,6 +54,7 @@ int main()
 		system("cls");
 		MyString Response = MyString(PlayerResponse);
 		Response.ToLower();
+
 		if (Response.findSubString("move") == true)
 		{
 			if (Response.findSubString("east") == true && Rooms[PlayerOne.m_positionY][PlayerOne.m_positionX].m_EastDoor == true)
@@ -71,12 +74,40 @@ int main()
 				PlayerOne.moveNorth();
 			}
 		}
-		else if ((Response.findSubString("grab") == true || Response.findSubString("pickup") == true)&&Response.findSubString(Rooms[PlayerOne.m_positionY][PlayerOne.m_positionX].m_Item)==true)
+		else if ((Response.findSubString("grab") == true || Response.findSubString("pickup") == true))
 		{
-			PlayerOne.
+			if (Response.findSubString("key") && Rooms[PlayerOne.m_positionY][PlayerOne.m_positionX].m_HasTreasureKey == true)
+			{
+				std::cout << "You picked up the treasure key." << std::endl;
+
+				PlayerOne.m_hasTreasure = true;
+			}
+			else if (Response.findSubString("sword") && Rooms[PlayerOne.m_positionY][PlayerOne.m_positionX].m_HasSword == true)
+			{
+				std::cout << "You picked up the shining shortsword." << std::endl;
+				PlayerOne.m_hasSword = true;
+			}
+			else if (Response.findSubString("key") && Rooms[PlayerOne.m_positionY][PlayerOne.m_positionX].m_HasBossKey == true)
+			{
+				std::cout << "You picked up the key to the boss room." << std::endl;
+
+				PlayerOne.m_hasBossKey = true;
+			}
+		}
+		else if (Response.findSubString("fight"))
+		{
+			if (PlayerOne.m_hasSword == false)
+			{
+				std::cout << "You charged forward and were decimated." << std::endl;
+				Sleep(2000);
+				return 0;
+			}
+			else
+			{
+				std::cout << "You stabbed the creature in the chest and killed it.\nWhat will you do?";
+			}
 		}
 	}
-
 	//PlaySound(TEXT("C:\\Users\\max.guidry\\Downloads\\Prayer Position Instrumental"), NULL, SND_ASYNC);
 	system("pause");
 	return 0;

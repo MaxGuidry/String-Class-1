@@ -11,10 +11,11 @@ public:
 	int moveSouth();
 	int moveEast();
 	int moveWest();
-private:
-	char *m_Name;
 	bool m_hasSword;
 	bool m_hasTreasure;
 	bool m_hasBossKey;
+private:
+	char *m_Name;
+	
 	
 };
