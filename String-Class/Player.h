@@ -17,6 +17,9 @@ public:
 	bool m_hasSword;
 	bool m_hasTreasure;
 	bool m_hasBossKey;
+	void setPrevious(int,int);
 private:
+	int m_PreviousX;
+	int m_PreviousY;
 	char *m_Name;
 };
