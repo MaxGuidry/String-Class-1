@@ -22,6 +22,9 @@ public:
 	bool m_HasTrapHole;
 	bool m_HiddenDoor;
 	void printDatBoi();
+	void printPepe();
+	void printDoge();
+	void printHarambe();
 	void lockDoors();
 private:
 	const char * m_Text;
