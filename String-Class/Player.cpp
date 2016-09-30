@@ -127,8 +127,12 @@ int Player::CheckResponse(MyString Answer, Room Rooms[][5])
 			Rooms[3][2].m_SouthDoor = true;
 		}
 	}
-	else if (Answer.findSubString("fight") && Rooms[m_positionY][m_positionX].m_HasEnemy == true)
+	else if (Answer.findSubString("fight") && (Rooms[m_positionY][m_positionX].m_HasEnemy == true||Rooms[m_positionY][m_positionX].m_HasBoss==true))
 	{
+		if (Rooms[m_positionY][m_positionX].m_HasBoss == true && m_hasSword == true)
+		{
+			return 1;
+		}
 		if (m_hasSword == false)
 		{
 			std::cout << "You charged forward and were decimated.\n\nGAME OVER" << std::endl;
@@ -140,6 +144,7 @@ int Player::CheckResponse(MyString Answer, Room Rooms[][5])
 			std::cout << "You stabbed the creature in the chest and killed it.\nWhat will you do?";
 			Rooms[m_positionY][m_positionX].m_HasEnemy = false;
 		}
+		
 	}
 	else if (Answer.findSubString("press") && Rooms[m_positionY][m_positionX].m_HasDeathButton == true)
 	{
