@@ -7,9 +7,8 @@
 
 int main()
 {
-	std::cout << "Welcome to: Meme Dungeon .\nPlease enter your name: " << std::endl;
+	std::cout << "Welcome to: Meme Dungeon.\nPlease enter your name: " << std::endl;
 	srand(time(NULL));
-	//TODO make an actual fight for the boss
 	//TODO make a puzzle of some sort for east door room 13
 	//TODO stop info from printing after an action is performed
 	bool isGameOver = false;
