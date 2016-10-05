@@ -85,12 +85,10 @@ int main()
 		(Rooms[PlayerOne.m_positionY][PlayerOne.m_positionX].m_HasEnemy == true) ? Rooms[PlayerOne.m_positionY][PlayerOne.m_positionX].lockDoors() : (PlayerOne.m_positionY+1==4&&PlayerOne.m_positionX==2)? Rooms[PlayerOne.m_positionY][PlayerOne.m_positionX].openDoor(Rooms[PlayerOne.m_positionY][PlayerOne.m_positionX]):Rooms[PlayerOne.m_positionY][PlayerOne.m_positionX].openDoor(OriginalCopy[PlayerOne.m_positionY][PlayerOne.m_positionX]);
 		PlayerOne.setPrevious(TempX,TempY);
 	}
-	if (isGameOver == true)
+	if (Rooms[4][2].m_HasBoss == false)
 	{
-		std::cout << "CONGRATS...YOU ESCAPED THE DUNGEON!!\N";
-		Sleep(2000);
+		std::cout << "CONGRATS...YOU ESCAPED THE DUNGEON!!!\n";
 	}
-	//PlaySound(TEXT("C:\\Users\\max.guidry\\Downloads\\Prayer Position Instrumental"), NULL, SND_ASYNC);
 	system("pause");
 	return 0;
 }

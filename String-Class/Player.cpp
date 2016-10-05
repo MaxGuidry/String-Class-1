@@ -135,6 +135,7 @@ int Player::CheckResponse(MyString Answer, Room Rooms[][5])
 	{
 		if (Rooms[m_positionY][m_positionX].m_HasBoss == true && m_hasSword == true)
 		{
+			Rooms[m_positionY][m_positionX].m_HasBoss = false;
 			return 1;
 		}
 		if (m_hasSword == false)
