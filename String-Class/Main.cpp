@@ -7,7 +7,7 @@
 
 int main()
 {
-	std::cout << "Welcome to: Meme Dungeon."<< std::endl;
+	std::cout << "Welcome to: Meme Dungeon.\nIf at any time you need help just type \"help\""<< std::endl;
 	srand(time(NULL));
 	//TODO stop info from printing after an action is performed
 	bool isGameOver = false;
@@ -34,7 +34,7 @@ int main()
 	Room Room20 = Room(0, 1, 1, 1, 1, "the room you are in has doors to the west, north and south.\nWhat will you do?", 0, 0, 0, 0, 0, 0);
 	Room Room21 = Room(0, 0, 1, 0, 0, "you enter through the secret door and find...\n", 0, 0, 0, 0, 0, 0);//TODO Make something funny and dumb happen here
 	Room Room22 = Room(0, 0, 1, 0, 0, "you see a large key on the ground.\nThere is only a door to the north.\nWhat will you do?", 0, 1, 0, 0, 0, 0);
-	Room Room23 = Room(0, 0, 1, 0, 0, "the room and see the ", 0, 0, 0, 1, 0, 0,0,1);//TODO name or describe boss here
+	Room Room23 = Room(0, 0, 1, 0, 0, "the room and see the boss ", 0, 0, 0, 1, 0, 0,0,1);//TODO name or describe boss here
 	Room Room24 = Room(1, 0, 1, 0, 1, "the room you are in has doors to the east and north.\nWhat will you do?", 0, 0, 0, 0, 0, 0);
 	Room Room25 = Room(0, 1, 1, 0, 0, "You see a large pool of swirling blue liquid.\nThe glow of the liquid entices you.\nThere are doors to the north and west.\nWhat will you do?", 0, 0, 0, 0, 0, 0);
 	Room Rooms[5][5] =
