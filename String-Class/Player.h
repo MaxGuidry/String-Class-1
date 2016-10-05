@@ -5,7 +5,7 @@ class Player
 {
 public:
 	Player() {};
-	Player(char*,bool,bool,bool,int,int);
+	Player(bool,bool,bool,int,int);
 	int CheckResponse(MyString,Room [][5]);
 	char * Response();
 	int moveNorth();
@@ -21,5 +21,4 @@ public:
 private:
 	int m_PreviousX;
 	int m_PreviousY;
-	char *m_Name;
 };
