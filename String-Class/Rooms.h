@@ -11,7 +11,6 @@ public:
 	bool m_SouthDoor;
 	bool m_WestDoor;
 	bool m_Empty;
-	char * m_Item;
 	void openDoor(Room);
 	void PrintInfo();
 	bool m_HasBossKey;
