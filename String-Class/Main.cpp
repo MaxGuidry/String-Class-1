@@ -7,7 +7,7 @@
 
 int main()
 {
-	std::cout << "Welcome to: Meme Dungeon.\nIf at any time you need help just type \"help\""<< std::endl;
+	std::cout << "Welcome to: Meme Dungeon.\nTo move around type things like \"move east\" or \"move north\"\nIf at any time you need help just type \"help\""<< std::endl;
 	srand(time(NULL));
 	//TODO stop info from printing after an action is performed
 	bool isGameOver = false;
